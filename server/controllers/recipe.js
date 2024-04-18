@@ -5,7 +5,6 @@ async function getRandomRecipes(ctx) {
     try {
         const response =  await apiService.getRandomRecipes();
         const data = await response.json();
-        console.log(data);
         ctx.body = data;
     }catch(error){
         console.error('Error fetching random recipe:', error);

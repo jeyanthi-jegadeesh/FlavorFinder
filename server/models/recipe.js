@@ -1,4 +1,4 @@
-const mongoose = require('./');
+const mongoose = require('./db');
 
 const Schema = mongoose.Schema;
 
@@ -10,7 +10,7 @@ const recipeSchema = new Schema({
   image:String
 });
 
-const Recipe = mongoose.model('Recipe', recipeSchema);
+const Recipe = mongoose.model('Recipes', recipeSchema);
 
 
 module.exports = Recipe;

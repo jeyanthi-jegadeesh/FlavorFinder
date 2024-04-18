@@ -1,4 +1,4 @@
-const mongoose = require('./');
+const mongoose = require('./db.js');
 
 const Schema = mongoose.Schema;
 

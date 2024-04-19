@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,13 @@ export class RecipeService {
   constructor(private httpClient :  HttpClient) { }
 
   getRandomRecipes(): Observable<any>{
-    return this.httpClient.get(this.baseUrl+'/discover');
+    return this.httpClient.get(this.baseUrl+'/randomRecipes');
   }
+
+  searchRecipes(ingredients: string): Observable<any>{
+    const params = new HttpParams().set('ingredients', ingredients);
+    return this.httpClient.get(this.baseUrl+'/searchRecipes/', { params });
+  }
+
 
 }

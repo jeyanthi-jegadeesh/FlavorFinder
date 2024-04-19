@@ -13,12 +13,14 @@ import { MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RecipeItemComponent
   ],
   imports: [
     BrowserModule,

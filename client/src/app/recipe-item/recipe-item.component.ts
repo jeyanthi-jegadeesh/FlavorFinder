@@ -8,4 +8,7 @@ import { Recipe } from '../recipe';
 export class RecipeItemComponent {
   @Input() recipe: Recipe ;
 
+  recipeDetail() {
+    return `/recipeDetail/${this.recipe.id}`;
+  }
 }

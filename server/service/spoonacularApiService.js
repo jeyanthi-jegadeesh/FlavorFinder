@@ -13,7 +13,17 @@ async function searchRecipes(ingredients){
         return await fetch(`${spoonacularBaseURL}/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`);
       } catch (error) {
         console.error('Error fetching recipe with input ingredients from Spoonacular api:', error);
-      }
+    }
 }
 
-module.exports = {getRandomRecipes, searchRecipes}
+async function getRecipeDetails(recipeId){
+    try {
+      //https://api.spoonacular.com/recipes/{id}/information
+      // https://api.spoonacular.com/recipes/633547/information?apiKey=1da7ba3c94c44581a93b8d71a208a21b
+      return await fetch(`${spoonacularBaseURL}/recipes/${recipeId}/information?apiKey=${apiKey}`);
+    } catch (error) {
+      console.error(`Error fetching recipe details for recipe id ${recipeId} from Spoonacular api:`, error);
+    }
+}
+
+module.exports = {getRandomRecipes, searchRecipes, getRecipeDetails}

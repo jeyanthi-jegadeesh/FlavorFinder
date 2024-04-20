@@ -26,7 +26,7 @@ async function searchRecipes(ctx){
         //const ingredients = 'appingredientsle';
         if(validator.isNil(ingredients)){
             ctx.status = 400;
-            ctx.body =  { error: error.message || 'Missing input values' };
+            ctx.body =  'Ingredients missing' ;
         }
         const response =  await apiService.searchRecipes(ingredients);
         const data = await response.json();
@@ -108,5 +108,22 @@ async function getWishList(ctx){
     }
 }
 
-
-module.exports = {getRandomRecipes, searchRecipes, saveRecipe, getWishList}
+async function getRecipeDetails(ctx){
+    try{
+        console.log('==========    ', ctx.params.recipeId)
+        const recipeId = ctx.params.recipeId;
+        if(validator.isNil(recipeId)){
+            ctx.status = 400;
+            ctx.body = 'Cannot get recipe details. Missing recipeId';
+        }
+        const response =  await apiService.getRecipeDetails(recipeId);
+        const data = await response.json();
+        console.log(data)
+        ctx.body = data;
+    }catch(error){
+        console.error('Error getting recipe details:', error);
+        ctx.status = error.response.status || 500;
+        ctx.body = 'Internal Server Error';
+    }
+}
+module.exports = {getRandomRecipes, searchRecipes, saveRecipe, getWishList, getRecipeDetails}

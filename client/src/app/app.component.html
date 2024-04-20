@@ -2,4 +2,7 @@
     <app-header></app-header>
     <app-search (searchRecipes)="onSearch($event)"></app-search> 
     <app-recipe-list [recipes]="recipes"></app-recipe-list>
+   
+    <router-outlet></router-outlet>
+  
 </main>

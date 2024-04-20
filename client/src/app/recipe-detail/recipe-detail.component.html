@@ -1,0 +1,48 @@
+<div class="recipe-detail">
+  <div *ngIf="recipe">
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <!-- Recipe Image -->
+        <mat-grid-tile colspan="2">
+           <img mat-card-image [src]="recipe.image" alt="Photo of a recipe"> 
+        </mat-grid-tile>
+      
+        <!-- Ingredients -->
+        <mat-grid-tile>
+          <h3>Ingredients</h3>
+          <mat-list>
+            <mat-list-item *ngFor="let ingredient of recipe.extendedIngredients">
+              {{ ingredient.nameClean }} - {{ ingredient.amount }} {{ ingredient.unit }}
+            </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      
+        <!-- Instructions -->
+        <mat-grid-tile>
+          <h3>Instructions</h3>
+          <mat-list>
+            
+            <!-- <mat-list-item *ngFor="let instruction of instructions"> -->
+            <mat-list-item>
+              {{ recipe.instructions }}
+            </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      
+        <!-- Servings -->
+        <!-- <mat-grid-tile colspan="2">
+          <mat-form-field>
+            <input matInput type="number" placeholder="Servings" [(ngModel)]="servings">
+          </mat-form-field>
+        </mat-grid-tile>
+       -->
+        <!-- Footer Bar -->
+        <mat-grid-tile colspan="2">
+          <mat-toolbar>
+            <span class="spacer"></span>
+            <!-- <button mat-button color="primary" (click)="saveRecipe()">Save</button> -->
+            <!-- <button mat-button color="accent" (click)="updateRecipe()">Update</button> -->
+          </mat-toolbar>
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div> 
+</div>

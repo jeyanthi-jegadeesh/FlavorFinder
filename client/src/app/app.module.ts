@@ -15,14 +15,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule} from '@angular/material/card';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchComponent,
     RecipeListComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,9 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     FormsModule, 
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatListModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

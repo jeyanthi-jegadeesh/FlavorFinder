@@ -22,6 +22,8 @@ async function getRandomRecipes(ctx) {
 async function searchRecipes(ctx){
     try{
         const ingredients = ctx.params.ingredients;
+        console.log('ingredients..',ingredients)
+        //const ingredients = 'appingredientsle';
         if(validator.isNil(ingredients)){
             ctx.status = 400;
             ctx.body =  { error: error.message || 'Missing input values' };

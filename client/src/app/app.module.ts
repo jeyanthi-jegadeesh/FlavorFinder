@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +33,11 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
     MatInputModule,
     MatButtonModule,
     FormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
     provideClientHydration(),
     provideAnimationsAsync('noop')
   ],

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../recipe.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -8,12 +7,14 @@ import { RecipeService } from '../recipe.service';
 })
 export class SearchComponent implements OnInit {
     ingredients : string = '';
-    constructor(private service : RecipeService){}
+    constructor(){}
     ngOnInit(): void {
         
     }
 
-    searchRecipes(ingredients: string){
-      this.service.searchRecipes(ingredients);
+    @Output() searchRecipes = new EventEmitter<string>();
+
+    onSearch(): void  {
+      this.searchRecipes.emit(this.ingredients);
     }
 }

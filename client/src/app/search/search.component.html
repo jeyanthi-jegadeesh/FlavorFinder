@@ -1,10 +1,12 @@
-
-        <!-- <mat-form-field appearance="outline">
-            <mat-label>Search Ingredients</mat-label>
-            <input matInput placeholder="Search..." [(ngModel)]="ingredients">
-        </mat-form-field> -->
-<div> 
+<div>
+    <mat-form-field appearance="outline">
+        <mat-label>Search Ingredients</mat-label>
+        <input matInput placeholder="Search..." [(ngModel)]="ingredients">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+</div>
+<!-- <div> 
         <label>Search Ingredients</label>
         <input placeholder="" [(ngModel)]="ingredients">
         <button mat-raised-button color="primary" (click)="searchRecipes(ingredients)">Search</button>
-</div>  
+</div>   -->

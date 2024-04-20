@@ -10,12 +10,12 @@ export class RecipeService {
   constructor(private httpClient :  HttpClient) { }
 
   getRandomRecipes(): Observable<any>{
-    return this.httpClient.get(this.baseUrl+'/randomRecipes');
+    return this.httpClient.get(`${this.baseUrl}/randomRecipes`);
   }
 
   searchRecipes(ingredients: string): Observable<any>{
-    const params = new HttpParams().set('ingredients', ingredients);
-    return this.httpClient.get(this.baseUrl+'/searchRecipes/', { params });
+    console.log(ingredients)
+    return this.httpClient.get(`${this.baseUrl}/searchRecipes/${ingredients}`);
   }
 
 

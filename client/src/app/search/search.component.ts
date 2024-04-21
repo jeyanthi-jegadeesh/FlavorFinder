@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
     @Output() searchRecipes = new EventEmitter<string>();
 
     onSearch(): void  {
+      console.log("onSearch serach comp")
       this.searchRecipes.emit(this.ingredients);
     }
 }

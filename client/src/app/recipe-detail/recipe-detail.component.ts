@@ -21,14 +21,19 @@ export class RecipeDetailComponent implements OnInit{
   }
 
   getRecipeDetails(){
-    console.log('details...................')
+    console.log('details...................', )
     this.router.params.subscribe((params: Params) => {
       const recipeId =  params['id'];
+      console.log(recipeId)
       this.client.getRecipeDetails(recipeId)
       .subscribe(recipe => {
         this.recipe = recipe;
-       console.log(this.recipe.image)
+       console.log(this.recipe.title)
       });
     });
+  }
+
+  saveRecipe(){
+    console.log("save recipe");
   }
 }

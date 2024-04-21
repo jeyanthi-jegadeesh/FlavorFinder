@@ -9,4 +9,5 @@ import { Recipe } from '../recipe';
 export class RecipeListComponent{
   @Input()
   recipes: Recipe[];
+  
 }

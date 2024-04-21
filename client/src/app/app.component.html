@@ -1,5 +1,5 @@
 <main>
-    <app-header></app-header>
+    <app-header (wishlistRecipes)="onWishList()"></app-header>
     <app-search (searchRecipes)="onSearch($event)"></app-search> 
     <app-recipe-list [recipes]="recipes"></app-recipe-list>
    

@@ -1,0 +1,5 @@
+.recipe-image {
+    max-width: 200px;  /* Adjust the width as needed */
+    max-height: 200px; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure image doesn't get stretched */
+  }

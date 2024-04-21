@@ -9,6 +9,7 @@ export class RecipeItemComponent {
   @Input() recipe: Recipe ;
 
   recipeDetail() {
+    // const id = this.recipe.id == null ? this.recipe.recipeId : this.recipe.id;
     return `/recipeDetail/${this.recipe.id}`;
   }
 }

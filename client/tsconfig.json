@@ -24,6 +24,14 @@
       "dom"
     ]
   },
+  "files": [
+    "src/app/mock-recipe-detail.ts",
+    "src/app/mock-search-recipe.ts",
+    "src/app/mock-random-recipe.ts"
+  ],
+  "include": [
+    "src/**/*.ts"  // Include all TypeScript files in the 'src' folder and subfolders
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

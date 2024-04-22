@@ -1,0 +1,17 @@
+.search-container {
+    display: flex; /* Align elements in a row */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align to the start of the row */
+    padding: 10px; /* Add padding around the container */
+  }
+  
+  .search-container mat-form-field {
+    width : 300px;
+    margin-right: 20px; /* Add spacing between the text box and the button */
+  }
+  
+
+
+.search-container button:hover {
+    background-color: #3700b3; 
+  }

@@ -3,6 +3,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 import  mockRecipes  from '../mock-recipe-detail';
+import { Location } from '@angular/common';
+import { WishlistService } from '../wishlist.service';
+
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
@@ -11,31 +14,42 @@ import  mockRecipes  from '../mock-recipe-detail';
 export class RecipeDetailComponent implements OnInit{
 
   recipe: Recipe;
+  errorMessage : string;
   constructor(
     private router : ActivatedRoute,
-    private client : RecipeService
+    private recipeService : RecipeService,
+    private location: Location,
+    private wishlistService : WishlistService
   ){}
 
   ngOnInit(): void {
-    this.getRecipeDetails();
-    // this.recipe = mockRecipes;
-    // console.log('mock recipes..',mockRecipes.title)
+    //this.getRecipeDetails();
+     this.recipe = mockRecipes;
   }
 
   getRecipeDetails(){
-    console.log('details...................', )
     this.router.params.subscribe((params: Params) => {
       const recipeId =  params['id'];
-      console.log(recipeId)
-      this.client.getRecipeDetails(recipeId)
+      this.recipeService.getRecipeDetails(recipeId)
       .subscribe(recipe => {
         this.recipe = recipe;
-       console.log(this.recipe.title)
       });
     });
   }
 
+  back() {
+    this.location.back(); // navigates one step back on the history
+  }
   saveRecipe(){
-    console.log("save recipe");
+    this.wishlistService.saveRecipe(this.recipe).subscribe({
+      next: (data) => {
+        this.recipe = data;
+        this.wishlistService.addRecipeToWishlist(this.recipe);
+        this.errorMessage = ''; // Reset error message if data is successfully retrieved
+      },
+      error: (error) => {
+        this.errorMessage = "Recipe already Exists in User Wishlist"; // set the error message to display it in the UI
+      },
+    });
   }
 }

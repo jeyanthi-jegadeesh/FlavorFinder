@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from './recipe';
 
 @Injectable({
@@ -20,18 +20,29 @@ export class WishlistService {
 
   fetchWishlist(): void {
      // email id hard coded as login component is not yet implemented
-     console.log('.... fetchwishlist')
     const email = 'test@test.com';
     this.http.get<Recipe[]>(`${this.baseUrl}/wishList/${email}`).subscribe((recipes) => {
       this.wishlistSubject.next(recipes);
     });
   }
-
-  addRecipeToWishlist(recipe: Recipe): void {
-    this.http.post('https://api.example.com/wishlist', recipe).subscribe(() => {
+  saveRecipe(recipe : Recipe): Observable<any>{
+    const data = {
+      recipe: recipe, 
+      userId: '66213ceb4d63e240f069d8d6'
+    };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); 
+    return this.http
+      .post(`${this.baseUrl}/saveRecipe`,data, { headers }) // HTTP POST request
+  }
+  addRecipeToWishlist(recipe: Recipe): void {    
       const currentWishlist = this.wishlistSubject.getValue();
       this.wishlistSubject.next([...currentWishlist, recipe]); // Update the wishlist state
-    });
   }
+
+  // This method is called from recipe service to update the new wishlist recipes from DB
+  updateWishlist(recipes: Recipe[]) {
+    this.wishlistSubject.next(recipes); 
+  }
+
 
 }

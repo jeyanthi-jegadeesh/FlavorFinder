@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import mockSearchRecipes from '../mock-search-recipe';
+import { Recipe } from '../recipe';
+import { RecipeService } from '../recipe.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -7,15 +10,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
     ingredients : string = '';
-    constructor(){}
+    recipes : Recipe[] = [];
+
+     constructor( private recipeService : RecipeService,
+                  private router : Router
+     ){}
     ngOnInit(): void {
         
     }
 
-    @Output() searchRecipes = new EventEmitter<string>();
-
-    onSearch(): void  {
-      console.log("onSearch serach comp")
-      this.searchRecipes.emit(this.ingredients);
+    onSearch(ingredients: string){
+      //this.recipes = mockSearchRecipes;
+      this.router.navigate(['/'],{
+        queryParams: { search: this.ingredients }, // Pass search query as query parameter
+      }); 
     }
+   
 }

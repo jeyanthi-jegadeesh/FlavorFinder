@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { Recipe } from './recipe';
 @Injectable({
@@ -13,7 +13,6 @@ export class RecipeService {
   recipeList$ = this.recipeListSubject.asObservable();
 
   constructor(private httpClient :  HttpClient) {
-    console.log( 'recipe service called')
   }
 
   getRandomRecipes(): Observable<any>{
@@ -28,6 +27,8 @@ export class RecipeService {
   }
 
   getRecipeDetails(recipeId : number): Observable<any>{
-    return this.httpClient.get(`${this.baseUrl}/recipeDetails/${recipeId}`);
+    return this.httpClient.get(`${this.baseUrl}/recipe/${recipeId}`);
   }
+
+  
 }

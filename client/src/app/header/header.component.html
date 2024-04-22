@@ -1,10 +1,12 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span><img src="../../assets/logo.png" alt="Logo"></span>
-      <span class="spacer"></span>
-      <button mat-button (click)="onWishList()" >
-        Wishlist ({{ wishlistCount }})
-      </button>
-      <button mat-button (click)="logout()">Logout</button>
-    </mat-toolbar-row>
-</mat-toolbar>
+<div class="header">
+  <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span><img src="../../assets/logo.png" alt="Logo"></span>
+        <span class="spacer"></span>
+        <button mat-button (click)="onWishList()" >
+          Wishlist ({{ wishlistCount }})
+        </button>
+        <button mat-button (click)="logout()">Logout</button>
+      </mat-toolbar-row>
+  </mat-toolbar>
+</div>

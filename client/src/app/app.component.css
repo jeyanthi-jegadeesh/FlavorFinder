@@ -1,0 +1,6 @@
+.main-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); 
+    height: 100vh; /* Makes the main container full height */
+    width: 100vw;
+  }

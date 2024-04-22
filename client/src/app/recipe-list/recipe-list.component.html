@@ -1,7 +1,8 @@
-<div class="recipe-list">
+
   <div *ngIf="recipes">
-    <div *ngFor="let recipe of recipes">
-      <app-recipe-item [recipe]="recipe"></app-recipe-item>
-    </div>
+    <div class="recipe-list-container">
+      <div *ngFor="let recipe of recipes">
+        <app-recipe-item [recipe]="recipe"></app-recipe-item>
+      </div>
   </div>
 </div>

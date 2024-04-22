@@ -1,5 +1,5 @@
 <div class="recipe-detail">
-  
+  <div class="error-text" *ngIf="errorMessage">{{ errorMessage }}</div> 
   <div *ngIf="recipe">
     <mat-grid-list cols="2" rowHeight="2:1">
         <!-- Recipe Image -->
@@ -41,7 +41,7 @@
           <mat-toolbar>
             <span class="spacer"></span>
             <button mat-button color="primary" (click)="saveRecipe()">Save</button> 
-            <button mat-button color="back">Back</button>
+            <button mat-button color="back" (click)="back()">Back</button>
           </mat-toolbar>
         </mat-grid-tile>
       </mat-grid-list>

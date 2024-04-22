@@ -45,7 +45,6 @@ import { MatListModule } from '@angular/material/list';
     MatListModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
     provideClientHydration(),
     provideAnimationsAsync('noop')
   ],

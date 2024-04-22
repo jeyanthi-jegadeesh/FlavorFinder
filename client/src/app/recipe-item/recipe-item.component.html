@@ -1,9 +1,11 @@
-<a [routerLink]="recipeDetail()">
-    <mat-card class="recipe-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{recipe.title}}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="recipe.image" alt="Photo of a recipe" class="recipe-image">
-      </mat-card>
-</a>
+<div class="recipe-item-container">
+  <a [routerLink]="recipeDetail()">
+      <mat-card class="recipe-card">
+          <mat-card-header>
+            <!-- <div mat-card-avatar class="recipe-image-avatar"></div> -->
+            <mat-card-title>{{recipe.title}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="recipe.image" alt="Photo of a recipe" class="recipe-image">
+        </mat-card>
+  </a>
+</div>

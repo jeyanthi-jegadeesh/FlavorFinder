@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WishlistService } from '../wishlist.service';
 import { Recipe } from '../recipe';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,10 +12,10 @@ export class HeaderComponent implements OnInit {
 
   wishlistCount: number = 0;
   recipes : Recipe[] = []
-  constructor(private wishlistService : WishlistService) { }
+  constructor(private wishlistService : WishlistService, 
+            private router : Router) { }
 
   ngOnInit(): void {
-    console.log('wishlist subscribed in Header')
     this.wishlistService.wishlist$.subscribe((recipes) => {
       this.wishlistCount = recipes.length; // Update the count when the wishlist changes     
     });
@@ -21,8 +23,9 @@ export class HeaderComponent implements OnInit {
   @Output() wishlistRecipes = new EventEmitter();
 
   onWishList(): void  {
-    console.log("header getWishList")
-    this.wishlistRecipes.emit();
+    this.router.navigate(['/'],{
+      queryParams: { wishlist: this.wishlistCount }, // Pass search query as query parameter
+    }); 
   }
 
 

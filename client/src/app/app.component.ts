@@ -19,8 +19,6 @@ export class AppComponent implements OnInit {
   
     ngOnInit(): void {
        this.getRandomRecipes();
-       
-      // this.getWishList();
     }
     getRandomRecipes() : void{
         console.log("getRandome Recipes called")

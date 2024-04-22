@@ -10,6 +10,7 @@ export class WishlistService {
   baseUrl = 'http://localhost:3000';
 
   // This subject holds the wishlist recipes of a user and its subscribed in Header component
+  // (to get the wishlist count ) and in app component( to get the wishlist recipes on click of wishlist button)
   private wishlistSubject = new BehaviorSubject<Recipe[]>([]);
   wishlist$ = this.wishlistSubject.asObservable(); 
 
@@ -20,7 +21,7 @@ export class WishlistService {
   fetchWishlist(): void {
      // email id hard coded as login component is not yet implemented
      console.log('.... fetchwishlist')
-    const email = 'example@example.com';
+    const email = 'test@test.com';
     this.http.get<Recipe[]>(`${this.baseUrl}/wishList/${email}`).subscribe((recipes) => {
       this.wishlistSubject.next(recipes);
     });
@@ -33,7 +34,4 @@ export class WishlistService {
     });
   }
 
-  getWishlist(): Recipe[] {
-    return this.wishlistSubject.getValue(); // Return the current state of the wishlist
-  }
 }

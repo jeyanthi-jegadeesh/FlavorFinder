@@ -4,12 +4,15 @@ const wishListModel = require('../models/userwishlist');
 const userModel = require('../models/user');
 const isNil = require('lodash.isnil');
 const mongoose = require('mongoose');
+const mockRandomRecipes = require('./mock-random-recipes')
+const mockSearchRecipes = require('./mock-search-recipes')
 
 async function getRandomRecipes(ctx) {
     
     try {
-        const response =  await apiService.getRandomRecipes();
-        const data = await response.json();
+        // const response =  await apiService.getRandomRecipes();
+        // const data = await response.json();
+        const data = mockRandomRecipes;
         ctx.body = data;
     }catch(error){
         console.error('Error fetching random recipe:', error);
@@ -26,8 +29,9 @@ async function searchRecipes(ctx){
             ctx.status = 400;
             ctx.body =  'Ingredients missing' ;
         }
-        const response =  await apiService.searchRecipes(ingredients);
-        const data = await response.json();
+        // const response =  await apiService.searchRecipes(ingredients);
+        // const data = await response.json();
+        const data = mockSearchRecipes;
         ctx.body = data;
     }catch(error){
         console.error('Error fetching recipes with ingredients:', error);

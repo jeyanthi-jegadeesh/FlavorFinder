@@ -1,13 +1,58 @@
+<div *ngIf="recipe">
 <div class="recipe-detail">
-  <div class="error-text" *ngIf="errorMessage">{{ errorMessage }}</div> 
+
+    <div class="grid-container">
+      <!-- First Row -->
+      <div class="recipe-info">
+        <h2>{{ recipe.title }}</h2>
+        <p>Servings: 4</p>
+        <p>Cooking Time: 30 minutes</p>
+        <p>vegetarian: true</p>
+        <p>glutenFree: true</p>
+        <p>dairyFree: true</p>
+      </div>
+      <div class="recipe-image">
+        <img mat-card-image [src]="recipe.image" alt="Photo of the recipe"> 
+      </div>
+  
+      <!-- Second Row -->
+      <div class="recipe-ingredients">
+          <h2>Ingredients</h2>
+       <!-- Angular Material List with bullet-point style -->
+          <ul  class="ingredients-list">
+            <!-- Using *ngFor to iterate over extendedIngredients -->
+            <li *ngFor="let ingredient of recipe.extendedIngredients">
+              {{ ingredient.nameClean }} - {{ ingredient.amount }} {{ ingredient.unit }}
+            </li>
+          </ul>
+      </div>
+      <div class="recipe-instructions">
+        <h2>Instructions</h2>
+        <div [innerHTML]= recipe.instructions></div>
+      </div>
+  
+      <!-- Third Row -->
+      <div class="recipe-buttons">
+        <button mat-raised-button color="primary" (click)="saveRecipe()">Save</button>
+        <button mat-raised-button color="primary" (click)="back()">Back</button>
+        
+      </div>
+    </div>
+
+</div>
+</div>
+
+
+
+
+  <!-- <div class="error-text" *ngIf="errorMessage">{{ errorMessage }}</div> 
   <div *ngIf="recipe">
     <mat-grid-list cols="2" rowHeight="2:1">
-        <!-- Recipe Image -->
+       
         <mat-grid-tile colspan="2">
            <img mat-card-image [src]="recipe.image" alt="Photo of a recipe"> 
         </mat-grid-tile>
-      
-        <!-- Ingredients -->
+   
         <mat-grid-tile>
           <h3>Ingredients</h3>
           <mat-list>
@@ -16,27 +61,25 @@
             </mat-list-item>
           </mat-list>
         </mat-grid-tile>
-      
-        <!-- Instructions -->
+     
         <mat-grid-tile>
           <h3>Instructions</h3>
           <mat-list>
             
-            <!-- <mat-list-item *ngFor="let instruction of instructions"> -->
+      
             <mat-list-item>
               {{ recipe.instructions }}
             </mat-list-item>
           </mat-list>
         </mat-grid-tile>
-      
-        <!-- Servings -->
-        <!-- <mat-grid-tile colspan="2">
+
+         <mat-grid-tile colspan="2">
           <mat-form-field>
             <input matInput type="number" placeholder="Servings" [(ngModel)]="servings">
           </mat-form-field>
         </mat-grid-tile>
-       -->
-        <!-- Footer Bar -->
+       
+      
         <mat-grid-tile colspan="2">
           <mat-toolbar>
             <span class="spacer"></span>
@@ -45,5 +88,5 @@
           </mat-toolbar>
         </mat-grid-tile>
       </mat-grid-list>
-  </div> 
-</div>
+  </div>  -->
+

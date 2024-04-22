@@ -20,7 +20,6 @@ export class SearchComponent implements OnInit {
     }
 
     onSearch(ingredients: string){
-      //this.recipes = mockSearchRecipes;
       this.router.navigate(['/'],{
         queryParams: { search: this.ingredients }, // Pass search query as query parameter
       }); 

@@ -35,17 +35,17 @@ export class RecipeListComponent implements OnInit{
       }
       else {
         // fetch random recipes by default
-        // this.getRandomRecipes();  
-          this.recipes = mockRandomRecipes;
+          this.getRandomRecipes();  
+         // this.recipes = mockRandomRecipes;
       }
     });
  }
  
  searchRecipes(ingredients :string){
-    //  this.recipeService.searchRecipes(ingredients).subscribe(response => {
-    //    this.recipes = response;
-    // });
-      this.recipes = mockSearchRecipes;
+     this.recipeService.searchRecipes(ingredients).subscribe(response => {
+       this.recipes = response;
+    });
+    //this.recipes = mockSearchRecipes;
     }
 
  getRandomRecipes() : void{

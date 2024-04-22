@@ -1,64 +1,78 @@
-/* Recipe Detail Container */
-.recipe-detail {
-    padding: 16px;
-    background-color: #f5f5f5; /* Light background color for the whole container */
-  }
-  
-  /* Error Message */
-  .recipe-detail .error-text {
-    color: red; /* Highlight error messages in red */
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-  
-  /* Grid Layout */
-  mat-grid-list {
-    gap: 16px; /* Space between grid tiles */
-  }
-  
-  /* Recipe Image */
-  mat-grid-tile img {
-    width: 100%;
-    height: auto; /* Ensure image is responsive */
-    border-radius: 8px; /* Rounded corners */
-  }
-  
-  /* Section Headings */
-  mat-grid-tile h3 {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333; /* Dark gray text */
-    margin-bottom: 8px;
-  }
-  
-  /* Ingredient List */
-  mat-list {
-    background: white; /* White background for better contrast */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
-    padding: 8px;
-  }
-  
-  mat-list-item {
-    padding: 8px 16px; /* Padding around list items */
-    border-bottom: 1px solid #e0e0e0; /* Divider between list items */
-  }
-  
-  mat-list-item:last-child {
-    border-bottom: none; /* No border for the last item */
-  }
-  
-  /* Servings Input Field */
-  mat-form-field {
-    width: 100%; /* Full width */
-    background: white; /* White background */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
-  }
-  
-  /* Footer Bar */
-  mat-toolbar {
-    background: #1976d2;
-    /*Materialdesignprimaryblue*/color: white;
-    /*Whitetextontoolbar*/border-radius: 8px;
+/* General styling for the recipe card */
+.recipe-card {
+  padding: 16px;
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: auto; /* Center the card on the page */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Light shadow for depth */
+  border-radius: 8px; /* Rounded corners for aesthetics */
+}
+
+/* Define the grid layout with 2 columns and 3 rows */
+.grid-container {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: 1fr 1fr; /* 2 equal-width columns */
+  grid-template-rows: auto auto auto; /* 3 rows, height adjusts to content */
+  gap: 16px; /* Space between grid items */
+}
+
+/* First row - title, servings, cooking time */
+.recipe-info {
+  grid-column: 1 / 2; /* Occupies the first column */
+  font-size: 1.2em; /* Slightly larger text for emphasis */
+  padding: 8px; /* Padding for breathing room */
+}
+
+.recipe-image {
+  grid-column: 2 / 3; /* Occupies the second column */
+  text-align: center; /* Center the image */
+}
+
+.recipe-image img {
+  max-width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for a softer look */
+}
+
+
+.recipe-instructions {
+  grid-column: 2 / 3; /* Occupies the second column */
+  padding: 30px;
+}
+
+/* If your instructions contain lists, ensure proper spacing */
+.recipe-instructions ul,
+.recipe-instructions ol {
+  margin: 0; /* Remove default margins */
+  padding-left: 0px; /* Indent for list items */
+}
+
+.recipe-instructions li {
+  margin-bottom: 15px; /* Space between list items */
+}
+
+/* Third row - save and back buttons */
+.recipe-buttons {
+  grid-column: 1 / -1; /* Spans across both columns */
+  display: flex; /* Use flexbox for button alignment */
+  justify-content: space-between; /* Spread buttons evenly */
+  padding: 8px; /* Padding for space around buttons */
+}
+
+.recipe-actions button {
+  font-size: 1em; /* Standard font size for buttons */
+  padding: 8px 16px; /* Padding for button content */
+  border-radius: 4px; /* Slightly rounded corners */
+}
+
+.ingredients-list {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  list-style-type: disc; /* Default bullet style */
+  padding-left: 16px; /* Padding to align bullets with text */
+}
+
+/* Styling for list items */
+.ingredients-list li {
+  padding: 8px 0; /* Padding between list items */
+  font-size: 1.1em; /* Slightly larger font for readability */
 }

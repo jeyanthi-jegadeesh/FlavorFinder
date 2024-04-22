@@ -10,4 +10,6 @@ export interface Recipe{
     }[];
     instructions : string,
     image : string
+    // readyInMinutes : string | null,
+    // servings: string | null
 }

@@ -19,7 +19,7 @@ import { MatCardModule} from '@angular/material/card';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     MatCardModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [
     provideClientHydration(),

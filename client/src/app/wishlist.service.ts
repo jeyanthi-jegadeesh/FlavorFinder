@@ -34,6 +34,7 @@ export class WishlistService {
     return this.http
       .post(`${this.baseUrl}/saveRecipe`,data, { headers }) // HTTP POST request
   }
+  
   addRecipeToWishlist(recipe: Recipe): void {    
       const currentWishlist = this.wishlistSubject.getValue();
       this.wishlistSubject.next([...currentWishlist, recipe]); // Update the wishlist state

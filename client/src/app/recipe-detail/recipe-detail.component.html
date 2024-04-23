@@ -1,92 +1,44 @@
 <div *ngIf="recipe">
-<div class="recipe-detail">
+  <mat-card class="recipe-detail">
+    <!-- Header section with title and optional subtitle -->
+    <mat-card-header>
+      <mat-card-title>{{ recipe.title }}</mat-card-title>
+      <mat-card-subtitle>
+        Servings: {{ recipe.servings }} | Cooking Time: {{ recipe.readyInMinutes }} mins | 
+        Vegetarian: {{ recipe.vegetarian ? 'Yes' : 'No' }} | Gluten-Free: {{ recipe.glutenFree ? 'Yes' : 'No' }} | 
+        Dairy-Free: {{ recipe.dairyFree ? 'Yes' : 'No' }}
+      </mat-card-subtitle>
+    </mat-card-header>
 
-    <div class="grid-container">
-      <!-- First Row -->
-      <div class="recipe-info">
-        <h2>{{ recipe.title }}</h2>
-        <p>Servings: 4</p>
-        <p>Cooking Time: 30 minutes</p>
-        <p>vegetarian: true</p>
-        <p>glutenFree: true</p>
-        <p>dairyFree: true</p>
-      </div>
-      <div class="recipe-image">
-        <img mat-card-image [src]="recipe.image" alt="Photo of the recipe"> 
-      </div>
-  
-      <!-- Second Row -->
-      <div class="recipe-ingredients">
-          <h2>Ingredients</h2>
-       <!-- Angular Material List with bullet-point style -->
-          <ul  class="ingredients-list">
-            <!-- Using *ngFor to iterate over extendedIngredients -->
-            <li *ngFor="let ingredient of recipe.extendedIngredients">
-              {{ ingredient.nameClean }} - {{ ingredient.amount }} {{ ingredient.unit }}
-            </li>
-          </ul>
-      </div>
-      <div class="recipe-instructions">
-        <h2>Instructions</h2>
-        <div [innerHTML]= recipe.instructions></div>
-      </div>
-  
-      <!-- Third Row -->
-      <div class="recipe-buttons">
-        <button mat-raised-button color="primary" (click)="saveRecipe()">Save</button>
-        <button mat-raised-button color="primary" (click)="back()">Back</button>
-        
-      </div>
-    </div>
+    <!-- Image section for the recipe -->
+    <img mat-card-image [src]="recipe.image" alt="Photo of the recipe">
 
-</div>
-</div>
+    <!-- Main content of the card -->
+    <mat-card-content>
+      
+      <!-- Ingredients Section -->
+      <mat-card-subtitle class="title-text">Ingredients</mat-card-subtitle>
+      <ul>
+        <!-- Iterate over the extended ingredients -->
+        <li *ngFor="let ingredient of recipe.extendedIngredients">
+          {{ ingredient.nameClean }} - {{ ingredient.amount }} {{ ingredient.unit }}
+        </li>
+      </ul>
 
-
-
-
-  <!-- <div class="error-text" *ngIf="errorMessage">{{ errorMessage }}</div> 
-  <div *ngIf="recipe">
-    <mat-grid-list cols="2" rowHeight="2:1">
-       
-        <mat-grid-tile colspan="2">
-           <img mat-card-image [src]="recipe.image" alt="Photo of a recipe"> 
-        </mat-grid-tile>
-   
-        <mat-grid-tile>
-          <h3>Ingredients</h3>
-          <mat-list>
-            <mat-list-item *ngFor="let ingredient of recipe.extendedIngredients">
-              {{ ingredient.nameClean }} - {{ ingredient.amount }} {{ ingredient.unit }}
-            </mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
+      <!-- Instructions Section with styling -->
+      <mat-card-subtitle class="title-text">Instructions</mat-card-subtitle>
      
-        <mat-grid-tile>
-          <h3>Instructions</h3>
-          <mat-list>
-            
-      
-            <mat-list-item>
-              {{ recipe.instructions }}
-            </mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
+        <!-- Example of instructions broken down into steps -->
+        <ul> <!-- Using unordered list to display parsed instruction steps -->
+          <li *ngFor="let step of instructionList">{{ step }}</li> <!-- Display each step on a separate line -->
+        </ul>
 
-         <mat-grid-tile colspan="2">
-          <mat-form-field>
-            <input matInput type="number" placeholder="Servings" [(ngModel)]="servings">
-          </mat-form-field>
-        </mat-grid-tile>
-       
-      
-        <mat-grid-tile colspan="2">
-          <mat-toolbar>
-            <span class="spacer"></span>
-            <button mat-button color="primary" (click)="saveRecipe()">Save</button> 
-            <button mat-button color="back" (click)="back()">Back</button>
-          </mat-toolbar>
-        </mat-grid-tile>
-      </mat-grid-list>
-  </div>  -->
+    </mat-card-content>
 
+    <!-- Action section for buttons -->
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="saveRecipe()">Save</button>
+      <button mat-raised-button color="primary" (click)="back()">Back</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

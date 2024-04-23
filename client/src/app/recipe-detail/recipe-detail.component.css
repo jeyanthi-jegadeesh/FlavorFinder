@@ -1,78 +1,86 @@
-/* General styling for the recipe card */
-.recipe-card {
-  padding: 16px;
-  max-width: 600px; /* Adjust the maximum width as needed */
-  margin: auto; /* Center the card on the page */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Light shadow for depth */
-  border-radius: 8px; /* Rounded corners for aesthetics */
+/* CSS for the recipe-detail component */
+
+/* Border and spacing for the mat-card */
+mat-card.recipe-detail {
+  margin: 16px; /* Space around the card */
+  padding: 16px; /* Internal padding */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-/* Define the grid layout with 2 columns and 3 rows */
-.grid-container {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: 1fr 1fr; /* 2 equal-width columns */
-  grid-template-rows: auto auto auto; /* 3 rows, height adjusts to content */
-  gap: 16px; /* Space between grid items */
-}
-
-/* First row - title, servings, cooking time */
-.recipe-info {
-  grid-column: 1 / 2; /* Occupies the first column */
-  font-size: 1.2em; /* Slightly larger text for emphasis */
-  padding: 8px; /* Padding for breathing room */
-}
-
-.recipe-image {
-  grid-column: 2 / 3; /* Occupies the second column */
-  text-align: center; /* Center the image */
-}
-
-.recipe-image img {
-  max-width: 100%; /* Make the image responsive */
+/* Style for the card image */
+mat-card img {
+  width: 75%; /* Decrease the image width */
   height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners for a softer look */
+  border-radius: 12px; /* Round the corners of the image */
+  border: 2px solid #ccc; /* Border around the image */
+  display: block; /* Display as block */
+  margin: 16px auto; /* Center the image horizontally */
+}
+
+/* Spacing between components in the card */
+mat-card-content > * {
+  margin-bottom: 16px; /* Space between content sections */
+}
+
+/* Style for the card title */
+mat-card-title {
+  color: #f57c00; /* Highlight title with a nice color (orange) */
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Bold text */
+
+}
+
+/* Style for the subtitle */
+mat-card-subtitle {
+  font-size: 16px; /* Standard font size for subtitle */
+  color: #757575; /* A grayish color */
+  font-family: 'Roboto', sans-serif; /* Ensure consistent font */
+
+}
+
+.title-text{
+  font-weight: bold;
+}
+/* Style for list items (ingredients) */
+ul {
+  padding-left: 16px; /* Padding for the list */
+  list-style-type: disc; /* Use bullet points */
+}
+
+li {
+  font-size: 16px; /* Increase font size */
+
+  color: #757575; /* Match the subtitle color */
+  margin-bottom: 8px; /* Space between list items */
 }
 
 
-.recipe-instructions {
-  grid-column: 2 / 3; /* Occupies the second column */
-  padding: 30px;
+/* Style for instructions */
+.instructions {
+  font-size: 16px; /* Increase font size for readability */
+  font-weight: bold; /* Bold text for emphasis */
+  color: #757575; /* Consistent color with subtitle */
+  line-height: 1.5; /* Improve readability */
+  padding: 8px 16px; /* Padding around the text */
+ 
 }
 
-/* If your instructions contain lists, ensure proper spacing */
-.recipe-instructions ul,
-.recipe-instructions ol {
-  margin: 0; /* Remove default margins */
-  padding-left: 0px; /* Indent for list items */
+/* Styling for ordered list */
+.instructions ol {
+  margin-left: 16px; /* Indentation for ordered lists */
 }
 
-.recipe-instructions li {
-  margin-bottom: 15px; /* Space between list items */
+.instructions li {
+  margin-bottom: 8px; /* Space between list items for separation */
+}
+/* Style for buttons in the card */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the start */
 }
 
-/* Third row - save and back buttons */
-.recipe-buttons {
-  grid-column: 1 / -1; /* Spans across both columns */
-  display: flex; /* Use flexbox for button alignment */
-  justify-content: space-between; /* Spread buttons evenly */
-  padding: 8px; /* Padding for space around buttons */
-}
-
-.recipe-actions button {
-  font-size: 1em; /* Standard font size for buttons */
-  padding: 8px 16px; /* Padding for button content */
-  border-radius: 4px; /* Slightly rounded corners */
-}
-
-.ingredients-list {
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
-  list-style-type: disc; /* Default bullet style */
-  padding-left: 16px; /* Padding to align bullets with text */
-}
-
-/* Styling for list items */
-.ingredients-list li {
-  padding: 8px 0; /* Padding between list items */
-  font-size: 1.1em; /* Slightly larger font for readability */
+button {
+  margin-right: 8px; /* Space between buttons */
 }

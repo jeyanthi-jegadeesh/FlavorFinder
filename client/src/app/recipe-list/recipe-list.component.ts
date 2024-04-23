@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
-import mockRandomRecipes  from '../mock-random-recipe';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from '@angular/router';
-import mockSearchRecipes from '../mock-search-recipe';
 import { WishlistService } from '../wishlist.service';
 @Component({
   selector: 'app-recipe-list',
@@ -36,7 +34,6 @@ export class RecipeListComponent implements OnInit{
       else {
         // fetch random recipes by default
           this.getRandomRecipes();  
-         // this.recipes = mockRandomRecipes;
       }
     });
  }
@@ -45,7 +42,6 @@ export class RecipeListComponent implements OnInit{
      this.recipeService.searchRecipes(ingredients).subscribe(response => {
        this.recipes = response;
     });
-    //this.recipes = mockSearchRecipes;
     }
 
  getRandomRecipes() : void{

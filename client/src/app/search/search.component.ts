@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import mockSearchRecipes from '../mock-search-recipe';
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
 import { Router } from '@angular/router';

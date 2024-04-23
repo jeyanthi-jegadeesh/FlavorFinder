@@ -6,6 +6,7 @@ const isNil = require('lodash.isnil');
 const mongoose = require('mongoose');
 const mockRandomRecipes = require('./mock-random-recipes')
 const mockSearchRecipes = require('./mock-search-recipes')
+const mockRecipeDetail = require('./mock-recipe-detail');
 
 async function getRandomRecipes(ctx) {
     
@@ -42,6 +43,7 @@ async function searchRecipes(ctx){
 
 async function saveRecipe(ctx){
     try{
+        console.log("saveRecipe")
         const recipeToAdd = ctx.request.body.recipe;
         const userId = ctx.request.body.userId;
         if(isNil(recipeToAdd) || isNil(userId)){
@@ -116,9 +118,9 @@ async function getRecipeDetails(ctx){
             ctx.status = 400;
             ctx.body = 'Cannot get recipe details. Missing recipeId';
         }
-        const response =  await apiService.getRecipeDetails(recipeId);
-        const data = await response.json();
-        ctx.body = data;
+        // const response =  await apiService.getRecipeDetails(recipeId);
+        // const data = await response.json();
+        ctx.body = mockRecipeDetail;
     }catch(error){
         console.error('Error getting recipe details:', error);
         ctx.status =  500;

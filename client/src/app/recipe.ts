@@ -10,6 +10,10 @@ export interface Recipe{
     }[];
     instructions : string,
     image : string
-    // readyInMinutes : string | null,
-    // servings: string | null
+    readyInMinutes : string | null,
+    servings: string | null
+    vegetarian: string | null;
+    glutenFree:string | null;
+    dairyFree:string | null;
+   
 }

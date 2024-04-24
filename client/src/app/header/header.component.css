@@ -20,3 +20,8 @@
   .header button:hover {
     background-color: #3700b3; /* Change color on hover */
   }
+
+  .spacer {
+    flex: 1 1 auto; 
+  }
+  

@@ -23,12 +23,15 @@ export class HeaderComponent implements OnInit {
   @Output() wishlistRecipes = new EventEmitter();
 
   onWishList(): void  {
-    this.router.navigate(['/'],{
+    this.router.navigate(['/recipes'],{
       queryParams: { wishlist: this.wishlistCount }, // Pass search query as query parameter
     }); 
   }
 
-
+  navigateHome() {
+    this.router.navigate(['/']); // Navigates to the default route
+  }
+  
   logout() {
     // Actual logout to be implemented
     console.log('logged out');

@@ -11,9 +11,9 @@ const mockRecipeDetail = require('./mock-recipe-detail');
 async function getRandomRecipes(ctx) {
     
     try {
-        // const response =  await apiService.getRandomRecipes();
-        // const data = await response.json();
-        const data = mockRandomRecipes;
+        const response =  await apiService.getRandomRecipes();
+        const data = await response.json();
+        //const data = mockRandomRecipes;
         ctx.body = data;
     }catch(error){
         console.error('Error fetching random recipe:', error);
@@ -30,9 +30,9 @@ async function searchRecipes(ctx){
             ctx.status = 400;
             ctx.body =  'Ingredients missing' ;
         }
-        // const response =  await apiService.searchRecipes(ingredients);
-        // const data = await response.json();
-        const data = mockSearchRecipes;
+        const response =  await apiService.searchRecipes(ingredients);
+        const data = await response.json();
+        //const data = mockSearchRecipes;
         ctx.body = data;
     }catch(error){
         console.error('Error fetching recipes with ingredients:', error);
@@ -43,15 +43,18 @@ async function searchRecipes(ctx){
 
 async function saveRecipe(ctx){
     try{
-        console.log("saveRecipe")
+
         const recipeToAdd = ctx.request.body.recipe;
+        recipeToAdd.recipeId = ctx.request.body.recipe.id;
         const userId = ctx.request.body.userId;
         if(isNil(recipeToAdd) || isNil(userId)){
             ctx.status = 400;
             ctx.body = 'Missing input data';
         }
+        
         // Query the recipes collection to find if recipe already exists
-        let recipeData = await recipeModel.findOne({ recipeId: recipeToAdd.recipeId });
+        let recipeData = await recipeModel.findOne({ recipeId: recipeToAdd.id });
+       
         // add recipe to Recipes collection only if recipe does not exists
         if(isNil(recipeData)){
             recipeData =  await recipeModel.create(recipeToAdd);
@@ -63,6 +66,7 @@ async function saveRecipe(ctx){
 
         // Query the wishlist collection to find if the combination of userId and recipeId exists
         let wishlistItem = await wishListModel.findOne({ userId: userIdObj, recipeId: recipeIdObj });
+       
         if (wishlistItem) {
             console.log("User ID and Recipe ID exist in the wishlist collection.");
             ctx.status = 400;
@@ -118,9 +122,10 @@ async function getRecipeDetails(ctx){
             ctx.status = 400;
             ctx.body = 'Cannot get recipe details. Missing recipeId';
         }
-        // const response =  await apiService.getRecipeDetails(recipeId);
-        // const data = await response.json();
-        ctx.body = mockRecipeDetail;
+        const response =  await apiService.getRecipeDetails(recipeId);
+        const data = await response.json();
+        ctx.body = data;
+        //ctx.body = mockRecipeDetail;
     }catch(error){
         console.error('Error getting recipe details:', error);
         ctx.status =  500;

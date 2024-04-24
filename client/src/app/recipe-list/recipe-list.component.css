@@ -5,10 +5,11 @@
     /*overflow-x: auto;  Allow horizontal scrolling if needed */
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 16px; 
+    gap: 30px; 
     row-gap: 16px;
-    padding: 16px; 
+  
     justify-content: center; 
     align-items: start;
-    
+    padding-left: 25px; 
+    padding-right: 25px;
   }

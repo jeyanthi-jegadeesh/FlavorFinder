@@ -51,12 +51,13 @@ export class RecipeDetailComponent implements OnInit{
   saveRecipe(){
     this.wishlistService.saveRecipe(this.recipe).subscribe({
       next: (data) => {
-        this.recipe = data;
+        //this.recipe = data;
         this.wishlistService.addRecipeToWishlist(this.recipe);
         this.errorMessage = ''; // Reset error message if data is successfully retrieved
         this.showErrorSnackbar('Recipe saved to the user wishlist');
       },
       error: (error) => {
+        console.log("Recipe already Exists in User Wishlist");
         this.errorMessage = "Recipe already Exists in User Wishlist"; // set the error message to display it in the UI
         this.showErrorSnackbar(this.errorMessage);
       },

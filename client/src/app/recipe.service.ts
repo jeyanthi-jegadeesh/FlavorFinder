@@ -27,6 +27,7 @@ export class RecipeService {
   }
 
   getRecipeDetails(recipeId : number): Observable<any>{
+    console.log("service... ", recipeId)
     return this.httpClient.get(`${this.baseUrl}/recipe/${recipeId}`);
   }
 
